@@ -1,8 +1,8 @@
 #! /bin/bash
 
 for query in /mnt/query/*.pdb; do
-    mkdir -p /mnt/results/"$qName"
     qName=$(basename "$query" .pdb)
+    mkdir -p /mnt/results/"$qName"
     for db in /mnt/db/*.DB; do
         dName=$(basename "$db" .DB)
         echo -e "\nProcessing query $qName on database $dName"
