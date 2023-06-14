@@ -174,7 +174,7 @@ if (USE_SYSTEM_ZSTD)
     include(FindPackageHandleStandardArgs)
     find_path(ZSTD_INCLUDE_DIRS NAMES zstd.h REQUIRED)
     # We use ZSTD_findDecompressedSize which is only available with ZSTD_STATIC_LINKING_ONLY
-    find_library(ZSTD_LIBRARIES NAMES libzstd.a libzstd.so libzstd_static REQUIRED)
+    find_library(ZSTD_LIBRARIES NAMES libzstd.a libzstd_static REQUIRED)
     find_package_handle_standard_args(ZSTD DEFAULT_MSG ZSTD_LIBRARIES ZSTD_INCLUDE_DIRS)
     mark_as_advanced(ZSTD_LIBRARIES ZSTD_INCLUDE_DIRS)
     include_directories(${ZSTD_INCLUDE_DIRS})
