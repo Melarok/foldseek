@@ -74,6 +74,10 @@ FROM debian:stable-slim
 ARG TARGETARCH
 ARG APP=foldseek
 
+RUN apt-get update && apt-get install -y \
+      gawk bash grep libstdc++6 libgomp1 libatomic1 zlib1g libbz2-1.0 wget tar aria2 \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY --from=builder /opt/build/${APP}_* /usr/local/bin/
 ADD util/${APP}_wrapper.sh /usr/local/bin/entrypoint
 RUN if [ "$TARGETARCH" = "arm64" ]; then rm -f /usr/local/bin/entrypoint; ln -s /usr/local/bin/${APP}_arch /usr/local/bin/entrypoint; fi
