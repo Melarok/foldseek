@@ -79,7 +79,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /opt/build/${APP}_* /usr/local/bin/
-ADD util/${APP}_wrapper.sh /usr/local/bin/entrypoint
+ADD utils/foldseekRun.sh /usr/local/bin/entrypoint
 RUN if [ "$TARGETARCH" = "arm64" ]; then rm -f /usr/local/bin/entrypoint; ln -s /usr/local/bin/${APP}_arch /usr/local/bin/entrypoint; fi
 
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
