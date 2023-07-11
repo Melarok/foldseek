@@ -33,6 +33,6 @@ for db in /mnt/db/*.DB; do
         /usr/local/bin/foldseek_avx2 convertalis querydb "$db" "$result" "$resultFolder"/processed/"$dName".pdb --format-mode 5 --threads "$threads" -v 1
     fi
     if [[ $formats = *tsv* ]]; then
-        /usr/local/bin/foldseek_avx2 convertalis querydb "$db" "$result" "$resultFolder"/processed/"$dName".tsv --format-mode 4 --format-options $formatOptions --threads "$threads" -v 1
+        /usr/local/bin/foldseek_avx2 convertalis querydb "$db" "$result" "$resultFolder"/processed/"$dName".tsv --format-mode 4 --format-output $formatOptions --threads "$threads" -v 1
     fi
 done
