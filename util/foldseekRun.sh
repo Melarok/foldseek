@@ -5,7 +5,7 @@ threads=$2
 aType=$3
 formats=$4
 
-formatOptions="query,target,evalue,gapopen,pident,fident,nident,qstart,qend,qlen,tstart,tend,tlen,alnlen,bits,cigar,qseq,tseq,qheader,theader,qaln,taln,mismatch,qcov,tcov,qset,qsetid,tset,tsetid,lddt,lddtfull,qca,tca,t,u,qtmscore,ttmscore,alntmscore,rmsd,prob"
+formatOptions="query,target,evalue,qlen,tlen,alnlen,mismatch,qcov,tcov,lddt,lddtfull,qtmscore,ttmscore,alntmscore,rmsd,prob"
 
 /usr/local/bin/foldseek_avx2 createdb /mnt/query/* querydb --threads "$threads" -v 1
 
