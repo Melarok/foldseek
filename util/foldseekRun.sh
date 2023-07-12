@@ -6,11 +6,13 @@ aType=$3
 formats=$4
 
 formatOptions="query,target,evalue,qlen,tlen,alnlen,mismatch,qcov,tcov,lddt,lddtfull,qtmscore,ttmscore,alntmscore,rmsd,prob"
+resultFolder="/mnt/results/foldseek_e$(echo $eVal)_$(date +'%Y-%m-%d_%H-%M-%S')"
+
+mkdir -p "$resultFolder"/raw "$resultFolder"/processed
 
 /usr/local/bin/foldseek_avx2 createdb /mnt/query/* querydb --threads "$threads" -v 1
 
-resultFolder="/mnt/results/foldseek_e$(echo $eVal)_$(date +'%Y-%m-%d_%H-%M-%S')"
-mkdir -p "$resultFolder"/raw "$resultFolder"/processed
+echo $formatOptions | tr "," "\t" > "$resultFolder"/processed/header.tsv
 
 for db in /mnt/db/*.DB; do
     dName=$(basename "$db" .DB)
@@ -33,6 +35,6 @@ for db in /mnt/db/*.DB; do
         /usr/local/bin/foldseek_avx2 convertalis querydb "$db" "$result" "$resultFolder"/processed/"$dName".pdb --format-mode 5 --threads "$threads" -v 1
     fi
     if [[ $formats = *tsv* ]]; then
-        /usr/local/bin/foldseek_avx2 convertalis querydb "$db" "$result" "$resultFolder"/processed/"$dName".tsv --format-mode 4 --format-output $formatOptions --threads "$threads" -v 1
+        /usr/local/bin/foldseek_avx2 convertalis querydb "$db" "$result" "$resultFolder"/processed/"$dName".tsv --format-mode 0 --format-output $formatOptions --threads "$threads" -v 1
     fi
 done
