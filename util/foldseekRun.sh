@@ -9,7 +9,7 @@ formatOptions="query,target,evalue,qlen,tlen,alnlen,mismatch,qcov,tcov,lddt,lddt
 
 /usr/local/bin/foldseek_avx2 createdb /mnt/query/* querydb --threads "$threads" -v 1
 
-resultFolder="/mnt/results/$(date +'%Y-%m-%d_%H-%M-%S')"
+resultFolder="/mnt/results/foldseek_e$(echo $eVal)_$(date +'%Y-%m-%d_%H-%M-%S')"
 mkdir -p "$resultFolder"/raw "$resultFolder"/processed
 
 for db in /mnt/db/*.DB; do
