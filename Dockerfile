@@ -1,5 +1,5 @@
 ARG BUILDPLATFORM=linux/amd64
-FROM --platform=$BUILDPLATFORM debian:stable-backports as builder
+FROM --platform=$BUILDPLATFORM debian:stable as builder
 ARG TARGETARCH=amd64
 ARG APP=foldseek
 ARG INSTRUCTIONSET=avx2
