@@ -6,7 +6,7 @@ aType=$3
 formats=$4
 
 formatOptions="query,target,evalue,qlen,tlen,alnlen,mismatch,qcov,tcov,lddt,qtmscore,ttmscore,alntmscore,rmsd,tseq"
-resultFolder="/mnt/results/foldseek_e$(echo $eVal)_$(date +'%Y-%m-%d_%H-%M-%S')"
+resultFolder="/mnt/results/foldseek_e$(echo $eVal)_$(date +'%Y-%m-%d_%H-%M-%S')/out"
 
 mkdir -p "$resultFolder"/tmp
 
