@@ -135,15 +135,16 @@ int indexdb(int argc, const char **argv, const Command &command) {
         }
     }
 
+    const bool noHeaders = (par.indexSubset & Parameters::INDEX_SUBSET_NO_HEADERS) != 0;
     if (recreate) {
         DBReader<unsigned int> *hdbr1 = NULL;
-        if (par.indexSubset != Parameters::INDEX_SUBSET_NO_HEADERS) {
+        if (noHeaders == false) {
             hdbr1 = new DBReader<unsigned int>(hdr1.c_str(), hdr1Index.c_str(), par.threads, DBReader<unsigned int>::USE_INDEX | DBReader<unsigned int>::USE_DATA);
             hdbr1->open(DBReader<unsigned int>::NOSORT);
         }
 
         DBReader<unsigned int> *hdbr2 = NULL;
-        if (sameDB == false && ppDB == false && par.indexSubset != Parameters::INDEX_SUBSET_NO_HEADERS) {
+        if (sameDB == false && ppDB == false && noHeaders == false) {
             hdbr2 = new DBReader<unsigned int>(par.hdr2.c_str(), par.hdr2Index.c_str(), par.threads, DBReader<unsigned int>::USE_INDEX | DBReader<unsigned int>::USE_DATA);
             hdbr2->open(DBReader<unsigned int>::NOSORT);
         }
@@ -158,7 +159,7 @@ int indexdb(int argc, const char **argv, const Command &command) {
         PrefilteringIndexReader::createIndexFile(indexDB, &dbr, dbr2, hdbr1, hdbr2, alndbr, seedSubMat, par.maxSeqLen,
                                                  par.spacedKmer, par.spacedKmerPattern, par.compBiasCorrection,
                                                  seedSubMat->alphabetSize, par.kmerSize, par.maskMode, par.maskLowerCaseMode,
-                                                 par.maskProb, kmerScore, par.split, par.indexSubset);
+                                                 par.maskProb, kmerScore, par.targetSearchMode, par.split, par.indexSubset);
 
         if (alndbr != NULL) {
             alndbr->close();
