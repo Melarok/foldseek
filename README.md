@@ -4,7 +4,7 @@ Foldseek enables fast and sensitive comparisons of large structure sets.
 <p align="center"><img src="https://github.com/steineggerlab/foldseek/blob/master/.github/foldseek.png" height="250"/></p>
 
 ## Publications
-[van Kempen M, Kim S, Tumescheit C, Mirdita M, Lee J, Gilchrist C, Söding J, and Steinegger M. Foldseek: fast and accurate protein structure search. Nature Biotechnology, doi:10.1038/s41587-023-01773-0 (2023)](https://www.nature.com/articles/s41587-023-01773-0)
+[van Kempen M, Kim S, Tumescheit C, Mirdita M, Lee J, Gilchrist C, Söding J, and Steinegger M. Fast and accurate protein structure search with Foldseek. Nature Biotechnology, doi:10.1038/s41587-023-01773-0 (2023)](https://www.nature.com/articles/s41587-023-01773-0)
 
 [Barrio-Hernandez I, Yeo J, Jänes J, Wein T, Varadi M, Velankar S, Beltrao P and Steinegger M. Clustering predicted structures at the scale of the known protein universe. biorxiv, doi:10.1101/2023.03.09.531927 (2023)](https://www.biorxiv.org/content/10.1101/2023.03.09.531927v1)
 # Table of Contents
@@ -12,7 +12,7 @@ Foldseek enables fast and sensitive comparisons of large structure sets.
 - [Foldseek](#foldseek)
 - [Webserver](#webserver)
 - [Installation](#installation)
-- [Memory requirments](#memory-requirments)
+- [Memory requirements](#memory-requirements)
 - [Tutorial Video](#tutorial-video)
 - [Documentation](#documentation)
 - [Quick Start](#quick-start)
@@ -47,7 +47,7 @@ conda install -c conda-forge -c bioconda foldseek
 ```
 Other precompiled binaries for ARM64 amd SSE2 are available at [https://mmseqs.com/foldseek](https://mmseqs.com/foldseek).
 
-## Memory requirments 
+## Memory requirements 
 For optimal software performance, consider three options based on your RAM and search requirements:
 
 1. **With Cα info (default).** 

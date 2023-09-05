@@ -43,13 +43,12 @@ LocalParameters::LocalParameters() :
                                     "1: SAM\n2: BLAST-TAB + query/db length\n"
                                     "3: Pretty HTML\n4: BLAST-TAB + column headers\n"
                                     "5: Calpha only PDB super-posed to query\n"
-                                    "6: BLAST-TAB + q/db complex tm (only for scorecomplex result)\n"
                                     "BLAST-TAB (0) and BLAST-TAB + column headers (4)"
                                     "support custom output formats (--format-output)\n"
                                     "(5) Superposed PDB files (Calpha only)";
 
     // TODO
-    PARAM_FORMAT_MODE.regex = "^[0-6]{1}$";
+    PARAM_FORMAT_MODE.regex = "^[0-5]{1}$";
     PARAM_SEARCH_TYPE.category = MMseqsParameter::COMMAND_HIDDEN;
     PARAM_TRANSLATION_TABLE.category = MMseqsParameter::COMMAND_HIDDEN;
     PARAM_TRANSLATION_TABLE.category = MMseqsParameter::COMMAND_HIDDEN;
@@ -198,7 +197,7 @@ LocalParameters::LocalParameters() :
 
     //rewrite param vals.
 //    PARAM_FORMAT_OUTPUT.description = "Choose comma separated list of output columns from: query,target,evalue,gapopen,pident,fident,nident,qstart,qend,qlen\ntstart,tend,tlen,alnlen,raw,bits,cigar,qseq,tseq,qheader,theader,qaln,taln,mismatch,qcov,tcov\nqset,qsetid,tset,tsetid,taxid,taxname,taxlineage,\nlddt,lddtfull,qca,tca,t,u,qtmscore,ttmscore,alntmscore,rmsd,prob\n";
-    PARAM_FORMAT_OUTPUT.description = "Choose comma separated list of output columns from: query,target,evalue,gapopen,pident,fident,nident,qstart,qend,qlen\ntstart,tend,tlen,alnlen,raw,bits,cigar,qseq,tseq,qheader,theader,qaln,taln,mismatch,qcov,tcov\nqset,qsetid,tset,tsetid,taxid,taxname,taxlineage,\nlddt,lddtfull,qca,tca,t,u,qtmscore,ttmscore,alntmscore,rmsd,prob\nqcomplextmscore,tcomplextmscore,assignid\n";
+    PARAM_FORMAT_OUTPUT.description = "Choose comma separated list of output columns from: query,target,evalue,gapopen,pident,fident,nident,qstart,qend,qlen\ntstart,tend,tlen,alnlen,raw,bits,cigar,qseq,tseq,qheader,theader,qaln,taln,mismatch,qcov,tcov\nqset,qsetid,tset,tsetid,taxid,taxname,taxlineage,\nlddt,lddtfull,qca,tca,t,u,qtmscore,ttmscore,alntmscore,rmsd,prob\nqcomplextmscore,tcomplextmscore,assignid\n"; //"complext,complexu"
 }
 
 
@@ -264,6 +263,8 @@ std::vector<int> LocalParameters::getOutputFormat(int formatMode, const std::str
         else if (outformatSplit[i].compare("qcomplextmscore")==0){code=LocalParameters::OUTFMT_Q_COMPLEX_TMSCORE; }
         else if (outformatSplit[i].compare("tcomplextmscore")==0){code=LocalParameters::OUTFMT_T_COMPLEX_TMSCORE;}
         else if (outformatSplit[i].compare("assignid")==0){code=LocalParameters::OUTFMT_ASSIGN_ID;}
+//        else if (outformatSplit[i].compare("complext")==0){code=LocalParameters::OUTFMT_COMPLEX_T;}
+//        else if (outformatSplit[i].compare("complexu")==0){code=LocalParameters::OUTFMT_COMPLEX_U;}
         else {
             Debug(Debug::ERROR) << "Format code " << outformatSplit[i] << " does not exist.";
             EXIT(EXIT_FAILURE);
